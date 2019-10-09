@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   {% load staticfiles %}
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <!-- CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <style type="text/css">
+      .image-flip:hover .backside,
+      .image-flip.hover .backside {
+         -webkit-transform: rotateY(0deg);
+         -moz-transform: rotateY(0deg);
+         -o-transform: rotateY(0deg);
+         -ms-transform: rotateY(0deg);
+         transform: rotateY(0deg);
+      }
+
+      .image-flip:hover .frontside,
+      .image-flip.hover .frontside {
+         -webkit-transform: rotateY(180deg);
+         -moz-transform: rotateY(180deg);
+         -o-transform: rotateY(180deg);
+         transform: rotateY(180deg);
+      }
+
+      .image-flip {
+         margin-bottom: 200px;
+         margin-left: 5%;
+         width: 300px;
+         height: 250px;
+      }
+
+      .mainflip {
+         -webkit-transition: 1s;
+         -webkit-transform-style: preserve-3d;
+         -ms-transition: 1s;
+         -moz-transition: 1s;
+         -moz-transform: perspective(1000px);
+         -moz-transform-style: preserve-3d;
+         -ms-transform-style: preserve-3d;
+         transition: 1s;
+         transform-style: preserve-3d;
+         position: relative;
+      }
+
+      .frontside,
+      .backside {
+         -webkit-backface-visibility: hidden;
+         -moz-backface-visibility: hidden;
+         -ms-backface-visibility: hidden;
+         backface-visibility: hidden;
+         -webkit-transition: 1s;
+         -webkit-transform-style: preserve-3d;
+         -moz-transition: 1s;
+         -moz-transform-style: preserve-3d;
+         -o-transition: 1s;
+         -o-transform-style: preserve-3d;
+         -ms-transition: 1s;
+         -ms-transform-style: preserve-3d;
+         transition: 1s;
+         transform-style: preserve-3d;
+         position: absolute;
+         top: 0;
+         left: 0;
+      }
+
+      .frontside {
+         -webkit-transform: rotateY(0deg);
+         -ms-transform: rotateY(0deg);
+         z-index: 2;
+         opacity: 0.93;
+      }
+
+      .backside {
+         background: white;
+         opacity: 0.9;
+         -webkit-transform: rotateY(-180deg);
+         -moz-transform: rotateY(-180deg);
+         -o-transform: rotateY(-180deg);
+         -ms-transform: rotateY(-180deg);
+         transform: rotateY(-180deg);
+      }
+
+      .card,
+      .card-img-top {
+         border-radius: 0;
+      }
+
+      .card-img-top {
+         height: 53%;
+         width: 100%;
+      }
+
+      .card-body {
+         margin-top: 20px;
+      }
+
+      .row {
+         margin-top: 12%;
+         position: relative;
+         margin-left: 25%;
+      }
+
+      body {
+         font-family: 'Mukta', sans-serif;
+	      height:100vh;
+	      min-height:550px;
+	      background-image:url({% static 'images/ruetdark.jpg' %});
+	      background-repeat: no-repeat;
+	      background-size:cover;
+	      background-position:center bottom;
+	      position:relative;
+         overflow-y: hidden;
+         overflow-x: hidden;
+      }
+
+   </style>
+</head>
+
+<body>
+   <div class="row">
+   <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+      <div class="mainflip">
+         <div class="frontside">
+            <div class="card" style="width:17rem; height:23rem;">
+               <img class="card-img-top img-fluid" src={% static 'images/logo.jpg' %} alt="card image">
+               <div class="card-body">
+                  <h4 class="card-title">Course Registration<br></h4>
+                  <p class="card-text">Move your cursor here to go to the course registration page. </p>
+               </div>
+            </div>
+         </div>
+         <div class="backside">
+            <div class="card" style="width:17rem; height:23rem;">
+               <div class="card-header">
+                  Welcome
+               </div>
+               <div class="card-body">
+                  <h4 class="card-title">Course Registration<br><hr></h4>
+                  <p class="card-text"><br>Click the button below to enter the course registration page.<br><br></p>
+                  <a href="#" class="btn btn-info btn-md">Enter</a>
+               </div>
+               <div class="card-footer">
+                  &nbsp;
+               </div>
+            </div>
+         </div>
+      </div>
+      
+   </div>
+
+   <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+         <div class="mainflip">
+            <div class="frontside">
+               <div class="card" style="width:17rem; height:23rem;">
+                  <img class="card-img-top img- fluid" src={% static 'images/logo.jpg' %} alt="card image">
+                  <div class="card-body">
+                     <h4 class="card-title">Course Lists<br></h4>
+                     <p class="card-text">Move your cursor here to see the course lists of yours.</p>
+                  </div>
+               </div>
+            </div>
+            <div class="backside">
+               <div class="card" style="width:17rem; height:23rem;">
+                  <div class="card-header">
+                     Welcome
+                  </div>
+                  <div class="card-body">
+                     <h4 class="card-title">Course Lists<br><hr></h4>
+                     <p class="card-text"><br>Click the button below to enter the course lists information page. <br><br></p>
+                     <a href="http://www.ruet.ac.bd/uploads/media/default/0001/01/a5d1617da5fd79198c3780ed8f18056d9663413f.pdf" class="btn btn-info btn-md">Enter</a>
+                  </div>
+                  <div class="card-footer">
+                     &nbsp;
+                  </div>
+               </div>
+            </div>
+         </div>
+         
+      </div>
+   </div>
+</body>
+
+</html>

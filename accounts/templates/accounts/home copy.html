@@ -1,0 +1,59 @@
+{% if error %}
+<font color="red">{{ error }}</font>
+<br><br>
+{% endif %}
+
+<h1> Login </h1>
+
+<form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    
+    Username:
+    <br>
+    <input type="text" name="username">
+    <br>
+    Password:
+    <br>
+    <input type="password" name="password">
+    <br>
+    <br>
+    <input class="btn btn-primary" type="submit" value="Login">
+</form>
+
+
+<h1> Sign Up! </h1>
+
+<form method="POST" action="{% url 'signup' %}">
+    {% csrf_token %}
+    
+    Id:
+    <br>
+    <input type="number" name="id">
+    <br>
+    Name:
+    <br>
+    <input type="text" name="name">
+    <br>
+    Password:
+    <br>
+    <input type="password" name="password1">
+    <br>
+    Confirm Password:
+    <br>
+    <input type="password" name="password2">
+    <br>
+    E-mail:
+    <br>
+    <input type="email" name="email">
+    <br>
+    Department:
+    <br>
+    <input type="text" name="department">
+    <br>
+    Session:
+    <br>
+    <input type="text" name="session">
+    <br>    
+    <br>
+    <input class="btn btn-primary" type="submit" value="Sign Up!">
+</form>

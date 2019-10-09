@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title> Registration Form </title>
+    <style type="text/css">
+        body {
+            font-family: 'Mukta', sans-serif;
+            color: white;
+            min-height: 550px;
+
+            background:
+            /* top, transparent black, faked with gradient */
+            linear-gradient(rgba(0, 0, 0, 0.7),
+                rgba(0, 0, 0, 0.7)),
+            url({% static 'images/ruet-gate2.jpg' %});
+
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center bottom;
+            position: relative;
+            background-attachment: fixed;
+        }
+
+        input[type=text],
+        input[type=number] {
+            opacity: 0.8;
+        }
+
+        .dropdown {
+            margin-top: 10px;
+        }
+
+        .dropdown-menu {
+            background-color: rgb(15, 15, 15);
+        }
+
+        .dropdown-item:hover,
+        .dropdown-item:focus {
+            background-color: rgb(39, 40, 41);
+        }
+
+        .dropdown-toggle {
+            background-color: rgb(0, 0, 0);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="dropdown">
+        &nbsp;&nbsp;
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <font size=4><b>&#9776;</b></font>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href={% url 'dashboard' account.id %}>
+                <font color=white>Dashboard</font>
+            </a>
+            <a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}" onclick="">
+                <font color=white>Logout</font>
+            </a>
+            <form id="logout" method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <input type='hidden'>
+            </form>
+
+        </div>
+    </div>
+
+    {% if error %}
+    <font color="red">{{ error }}</font>
+    <br><br>
+    {% endif %}
+
+    <h1>
+        <center> Course Registration Form </center>
+    </h1>
+    <hr>
+    <hr>
+    <br><br><br>
+
+    <form method="POST" action="{% url 'regform' account.id %}">
+        {% csrf_token %}
+
+        &nbsp;Roll No: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="number" name="roll">
+        <br><br><br>
+        &nbsp;Registration No: &nbsp;
+        <input type="number" name="regno">
+        <br><br><br>
+        &nbsp;Session: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" name="session">
+        <br><br><br>
+        &nbsp;Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" name="name">
+        <br><br><br>
+        &nbsp;Semester: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" name="semester">
+        <br><br><br>
+
+        <table style="width:50%" border="1px">
+            <tr>
+                <th rowspan="30">Course No. of <br> Backlog courses</th>
+                <th rowspan="30"> <input type="text" name="backlog" size="80%"></th>
+            </tr>
+
+            {% with ''|center:30 as range %}
+            {% for _ in range %}
+            <tr></tr>
+            {% endfor %}
+            {% endwith %}
+
+        </table>
+        <br><br><br>
+
+        <table style="width:98vw" border="1px">
+            <tr>
+                <th> Course No.</th>
+                <th> Course Title </th>
+                <th> Credit </th>
+            </tr>
+
+            <b>Courses to be registered in this semester:</b><br><br>
+            {% with ''|center:10 as range %}
+            {% for _ in range %}
+            <tr>
+                <td>
+                    <center><input type="text" name="courseno{{ forloop.counter }}" size="50%"></center>
+                </td>
+                <td>
+                    <center><input type="text" name="title{{ forloop.counter }}" size="50%"></center>
+                </td>
+                <td>
+                    <center><input type="text" name="credit{{ forloop.counter }}" size="50%"></center>
+                </td>
+            </tr>
+            {% endfor %}
+            {% endwith %}
+
+            <tr>
+                <td></td>
+                <td> <b class="d-flex justify-content-end">Total Credit of this Semester&nbsp;</b> </td>
+                <td>
+                    <center> <input type="text" name="totalcredit" size="50%"> </center>
+                </td>
+            </tr>
+
+        </table>
+
+        <br><br>
+
+        <div class="d-flex justify-content-end">
+            <input class="btn btn-primary mr-4" type="submit" value="Submit" onclick="confMessage()">
+            <script>
+                function confMessage() {
+                    confirm("Your Submission Has Been Received!");
+                }
+            </script>
+        </div>
+    </form>
+    <br>
+
+	<!--===============================================================================================-->
+	<script src={% static "vendor/jquery/jquery-3.2.1.min.js" %}></script>
+	<!--===============================================================================================-->
+	<script src={% static "vendor/bootstrap/js/popper.js" %}></script>
+	<script src={% static "vendor/bootstrap/js/bootstrap.min.js" %}></script>
+	<!--===============================================================================================-->
+	<script src={% static "vendor/select2/select2.min.js" %}></script>
+	<!--===============================================================================================-->
+	<script src={% static "js/main.js" %}></script>
+
+</body>
+
+</html>

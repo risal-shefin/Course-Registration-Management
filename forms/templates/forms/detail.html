@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load staticfiles %}
+    <title>Details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" href={% static 'images/icons/favicon.ico' %} type="image/png">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href={% static 'vendor/bootstrap/css/bootstrap.min.css' %}>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href={% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href={% static 'vendor/animate/animate.css' %}>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href={% static "vendor/select2/select2.min.css" %}>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href={% static "vendor/perfect-scrollbar/perfect-scrollbar.css" %}>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href={% static "css/util.css" %}>
+    <link rel="stylesheet" type="text/css" href={% static "css/main.css" %}>
+    <!--===============================================================================================-->
+
+    <style>
+        .container-table100 {
+            background:
+                /* top, transparent black, faked with gradient */ 
+                linear-gradient(
+                    rgba(0, 0, 0, 0.2), 
+                    rgba(0, 0, 0, 0.2)
+                 ),
+                 url({% static 'images/ruetdark.jpg' %});
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            background-attachment: fixed;
+        }
+
+        .cell1 {
+            margin-right: 250px;
+        }
+        .table {
+            opacity: 0.94;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <br><h4><center> <font color=#ffffff> Student Informaton </font></center></h4><br>
+                <div class="table">
+
+                    <div class="row header">
+                        <div class="cell">
+                            Title
+                        </div>
+                        <div class="cell">
+                            Information
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="cell" data-title="Name">
+                            <b> Name: </b>
+                        </div>
+                        <div class="cell1" data-title="Name Info">
+                            {{ form.name }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="cell" data-title="Roll">
+                            <b> Roll: </b>
+                        </div>
+                        <div class="cell" data-title="Roll Info">
+                            {{ form.roll }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="cell" data-title="Registration">
+                            <b> Registration No: </b>
+                        </div>
+                        <div class="cell" data-title="Registration Info">
+                            {{ form.regno }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="cell" data-title="Session">
+                            <b> Session: </b>
+                        </div>
+                        <div class="cell" data-title="Session Info">
+                            {{ form.session }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="cell" data-title="Semester">
+                            <b> Semester: </b>
+                        </div>
+                        <div class="cell" data-title="Semester Info">
+                            {{ form.semester }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="cell" data-title="Date">
+                            <b> Submission Time: </b>
+                        </div>
+                        <div class="cell" data-title="Date Info">
+                            {{ form.date }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <br><br><br><br><br>
+            <div class="wrap-table100">
+                <br><br><br><h4> <center> <font color=#ffffff> Courses </font></center></h4><br>
+                <div class="table">
+
+                    <div class="row header">
+                        <div class="cell">
+                            Course No
+                        </div>
+                        <div class="cell">
+                            Course Title
+                        </div>
+                        <div class="cell">
+                            Credit
+                        </div>
+                    </div>
+
+                    {% for x,y,z in info %}
+                    <div class="row">
+                        <div class="cell" data-title="Courseno Info">
+                            {{ x }}
+                        </div>
+                        <div class="cell1" data-title="Coursetitle Info">
+                            {{ y }}
+                        </div>
+                        <div class="cell" data-title="Credit Info">
+                            {{ z }}
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            <div class="wrap-table100">
+                <br><br><br>
+                <div class="table">
+                    <div class="row header">
+                        <div class="cell">
+                            <center>Course No of Backlog Courses</center>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="cell" data-title="Backlogs">
+                            {{ backlog }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--===============================================================================================-->
+    <script src={% static "vendor/jquery/jquery-3.2.1.min.js" %}></script>
+    <!--===============================================================================================-->
+    <script src={% static "vendor/bootstrap/js/popper.js" %}></script>
+    <script src={% static "vendor/bootstrap/js/bootstrap.min.js" %}></script>
+    <!--===============================================================================================-->
+    <script src={% static "vendor/select2/select2.min.js" %}></script>
+    <!--===============================================================================================-->
+    <script src={% static "js/main.js" %}></script>
+
+</body>
+
+</html>

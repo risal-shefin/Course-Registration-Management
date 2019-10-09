@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    {% load staticfiles %}
+    <title> Graphical View </title>
+    <style>
+        body {
+            height: 100vh;
+            min-height: 550px;
+            background-image:url({% static 'exc.png' %});
+            background-repeat: no-repeat;
+            background-size: cover top;
+            background-position: center;
+            position: relative;
+            overflow-x: hidden;
+            background-attachment: fixed;
+        }
+
+        .gg {
+            margin-top: 10%;
+            margin-left: 5%;
+            opacity: 0.95;
+        }
+    </style>
+</head>
+
+<body>
+    <center><img class="gg" src="data:image/png;base64,{{image_base64}}"
+        alt="Pie Chart" width=500 height=auto />
+    <img class="gg" src="data:image/png;base64,{{image2_base64}}"
+        alt="Bar Chart" width=500 height=auto /></center>
+</body>
+
+</html>

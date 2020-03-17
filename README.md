@@ -1,5 +1,5 @@
 # Course-Registration-Management
-A Web Project Regarding Course Registration Management
+A Web Project Regarding Course Registration Management <br>
 Framework: Django 2.0.2
 
 # Acknowledgement
